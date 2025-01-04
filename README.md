@@ -27,8 +27,8 @@
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/Zlkcyber/mygateBot.git
-    cd mygateBot
+   git clone https://github.com/SRCryptoBoyz/mygate-bot.git
+    cd mygate-bot
     ```
 
 2. Install the required dependencies:
