@@ -1,18 +1,19 @@
 {
-  "name": "mygate-bot",
+  "name": "my-gate",
+  "type": "module",
   "version": "1.0.0",
-  "description": "MyGate Node Bot for auto farming",
   "main": "main.js",
   "scripts": {
     "start": "node main.js"
   },
+  "author": "cboyz",
+  "license": "MIT",
+  "description": "",
   "dependencies": {
-    "chalk": "^5.2.0",
-    "moment": "^2.29.4",
-    "node-fetch": "^3.3.1",
-    "ws": "^8.13.0",
-    "https-proxy-agent": "^5.0.1"
-  },
-  "author": "Your Name",
-  "license": "MIT"
+    "chalk": "^5.4.1",
+    "crypto": "^1.0.1",
+    "https-proxy-agent": "^7.0.6",
+    "node-fetch": "^3.3.2",
+    "ws": "^8.18.0"
+  }
 }
