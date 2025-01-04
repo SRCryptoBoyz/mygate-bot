@@ -4,7 +4,7 @@ To make it easier to run mygate extention
 # Instalasi
 
 ## 1. Clone Project ##
-git clone <repository-url>
+git clone <https://github.com/SRCryptoBoyz/mygate-bot.git>
 
 cd mygate-bot
 
