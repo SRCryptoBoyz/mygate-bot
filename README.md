@@ -1,5 +1,4 @@
 # MyGate Network Bot
-![banner](image.png)
 
 
 ## Features
@@ -21,7 +20,6 @@
 - inspect or just F12, and find Network
 - copy the token and save it in `tokens.txt` 
 
-    ![token](image-1.png)!
 
 ## Installation
 
