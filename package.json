@@ -1,0 +1,18 @@
+{
+  "name": "mygate-bot",
+  "version": "1.0.0",
+  "description": "MyGate Node Bot for auto farming",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "moment": "^2.29.4",
+    "node-fetch": "^3.3.1",
+    "ws": "^8.13.0",
+    "https-proxy-agent": "^5.0.1"
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}
