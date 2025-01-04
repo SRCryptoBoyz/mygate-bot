@@ -1,3 +1,0 @@
-#SAMPLE 
-token123456789abcdef
-tokenabcdef123456789
