@@ -5,29 +5,59 @@ const logger = {
         const now = new Date().toISOString();
 
         const colors = {
-            info: chalk.green,
+            info: chalk.magenta,
             warn: chalk.yellow,
             error: chalk.red,
-            success: chalk.blue,
+            success: chalk.cyan,
             debug: chalk.magenta,
         };
 
-        const color = colors[level] || chalk.white;
+        const color = colors[level] || chalk.blue;
         const levelTag = `[ ${level.toUpperCase()} ]`;
-        const timestamp = `[ ${now} ]`;
+        const timestamp = now.split('T')[0] + 'T' + now.split('T')[1].split('.')[0]; // Hanya ambil tanggal dan waktu
 
-        const formattedMessage = `${chalk.green("[ Mygate-Node ]")} ${chalk.cyanBright(timestamp)} ${color(levelTag)} ${message}`;
+        // Format pesan log
+        const formattedMessage = `${chalk.magenta("=> MYGATE-NODE")}`;
+        const formattedTimestamp = `${chalk.cyanBright("=> TIME\t\t: " + timestamp)}`;
+        const formattedLevel = `${color("=> " + level.toUpperCase() + "\t: " + message)}`;
 
-        let formattedValue = ` ${chalk.green(value)}`;
-        if (level === 'error') {
-            formattedValue = ` ${chalk.red(value)}`;
+        let formattedValue = '';
+        
+        // Jika value adalah token, tampilkan 5 angka terakhir
+        if (typeof value === 'string' && value.includes('Bearer')) {
+            const tokenMatch = value.match(/Bearer (.*)/);
+            if (tokenMatch) {
+                const token = tokenMatch[1];
+                const shortenedToken = token.slice(-5); // Ambil 5 angka terakhir
+                formattedValue = `Token (shortened): ${chalk.green("Bearer " + shortenedToken)}`;
+            }
         }
+
+        // Jika value adalah objek, tampilkan properti objek tanpa tanda kurung kurawal
         if (typeof value === 'object') {
-            const valueColor = level === 'error' ? chalk.red : chalk.green;
-            formattedValue = ` ${valueColor(JSON.stringify(value))}`;
+            formattedValue = 'Details: ';
+            Object.keys(value).forEach((key, index) => {
+                formattedValue += `${key}: ${chalk.green(value[key])}`;
+                if (index < Object.keys(value).length - 1) {
+                    formattedValue += ', '; // Pemisah antar properti
+                }
+            });
+        } else if (value) {
+            formattedValue = `Details: ${chalk.green(value)}`;
         }
 
-        console.log(`${formattedMessage}${formattedValue}`);
+        // Jika level adalah error, tampilkan pesan error dengan warna merah
+        if (level === 'error') {
+            formattedValue = `Error Details: ${chalk.red(value)}`;
+        }
+
+        // Menampilkan pesan log dengan format yang lebih terstruktur
+        console.log(formattedMessage);
+        console.log(formattedTimestamp);
+        console.log(formattedLevel);
+        if (formattedValue) {
+            console.log(formattedValue);
+        }
     },
 
     info: (message, value = '') => logger.log('info', message, value),
